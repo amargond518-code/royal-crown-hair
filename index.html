@@ -3,124 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Royal Crown Hair</title>
+
+  <title>Royal Crown Hair | Premium Human Hair</title>
 
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: #f7f3ee;
+      background: #f8f5f0;
       color: #222;
+      line-height: 1.6;
     }
 
     header {
-      background: #222;
+      background: #171717;
       color: white;
       text-align: center;
-      padding: 25px 10px;
+      padding: 25px 15px;
     }
 
     header h1 {
-      margin: 0;
       font-size: 32px;
+      margin-bottom: 5px;
     }
 
     header p {
-      margin: 8px 0 0;
+      color: #ddd;
+    }
+
+    nav {
+      background: #2b2b2b;
+      text-align: center;
+      padding: 12px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
     }
 
     .hero {
       text-align: center;
-      padding: 40px 20px;
+      padding: 55px 20px;
+      background: white;
     }
 
     .hero h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #666;
+      font-size: 17px;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 45px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      margin-bottom: 25px;
       font-size: 28px;
     }
 
-    .products {
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-
     .product {
+      max-width: 360px;
+      margin: auto;
       background: white;
-      width: 300px;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+      padding: 18px;
+      border-radius: 15px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
     }
 
     .product img {
       width: 100%;
-      height: 250px;
+      height: 300px;
       object-fit: cover;
-      border-radius: 10px;
-      background: #ddd;
+      border-radius: 12px;
+    }
+
+    .product h3 {
+      font-size: 23px;
+      margin: 15px 0 5px;
     }
 
     .price {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
-      margin: 15px;
+      margin: 12px 0;
     }
 
-    .buy {
+    .whatsapp {
       display: inline-block;
-      background: #222;
+      background: #25D366;
       color: white;
-      padding: 12px 25px;
+      padding: 13px 25px;
       border-radius: 8px;
       text-decoration: none;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .about {
+      background: white;
+    }
+
+    .contact {
+      text-align: center;
     }
 
     footer {
-      text-align: center;
-      padding: 25px;
-      margin-top: 30px;
-      background: #222;
+      background: #171717;
       color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 27px;
+      }
+
+      .hero h2 {
+        font-size: 25px;
+      }
+
+      nav a {
+        margin: 0 5px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Royal Crown Hair</h1>
-  <p>Premium Human Hair</p>
-</header>
+  <header>
+    <h1>Royal Crown Hair</h1>
+    <p>Premium Human Hair</p>
+  </header>
 
-<section class="hero">
-  <h2>Beautiful Human Hair Collection</h2>
-  <p>Quality hair for customers worldwide</p>
-</section>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Hair</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<section class="products">
-  <div class="product">
+  <section class="hero" id="home">
+    <h2>Beautiful Human Hair Collection</h2>
+    <p>Quality human hair for customers worldwide.</p>
+  </section>
+
+  <section class="section" id="products">
+    <h2>Our Hair</h2>
+
+    <div class="product">
+
+      <img src="IMG-20250908-WA0031.jpg" alt="Royal Crown Human Hair">
+
+      <h3>Premium Human Hair</h3>
+
+      <p>High-quality human hair.</p>
+
+      <div class="price">Price on Request</div>
+
+      <a class="whatsapp"
+         href="https://wa.me/919405358227"
+         target="_blank">
+        WhatsApp / Contact
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <h2>About Royal Crown Hair</h2>
+
+    <p>
+      Royal Crown Hair offers quality human hair for customers
+      looking for beautiful and natural hair products.
+      Contact us for product details and pricing.
+    </p>
+  </section>
+
+  <section class="section contact" id="contact">
+    <h2>Contact Us</h2>
+
+    <p>For product details and price, contact us on WhatsApp.</p>
+
+    <a class="whatsapp"
+       href="https://wa.me/919405358227"
+       target="_blank">
+      Contact on WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    <p>© 2026 Royal Crown Hair</p>
+    <p>Premium Human Hair • Worldwide</p>
+  </footer>
+
+</body>
+</html>
 
     <img <img src="IMG-20250908-WA0031.jpg" alt="Royal Crown Hair">
 
     <h2>Human Hair</h2>
 
-    <p>Length: 10 Inches</p>
-
-    <div class="price">Price on Request</div>
-
-    <a class="buy" href="https://wa.me/919405358227" target="_blank">
-  WhatsApp / Contact
-    </a>
-    </a>
-
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 Royal Crown Hair</p>
-  <p>Quality Human Hair • Worldwide</p>
-</footer>
-
-</body>
-</html>
