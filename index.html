@@ -413,10 +413,10 @@ fetch(
 
     loading.style.display = "none";
 
-    const images = files.filter(file =>
-    file.type === "file" &&
-    /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name) &&
-    file.name !== "file_00000000ca5c82118acb195f3ed2a4f8.png"
+const images = files.filter(file =>
+  file.type === "file" &&
+  /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name) &&
+  file.name !== "file_00000000ca5c82118acb195f3ed2a4f8.png"
 );
 
     if(images.length === 0){
