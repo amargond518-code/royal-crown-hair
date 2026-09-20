@@ -414,9 +414,11 @@ fetch(
     loading.style.display = "none";
 
     const images = files.filter(file =>
-        file.type === "file" &&
-        /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name)
-    );
+    file.type === "file" &&
+    /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name) &&
+    !file.name.toLowerCase().includes("logo") &&
+    !file.name.toLowerCase().includes("royal")
+);
 
     if(images.length === 0){
         gallery.innerHTML = "<p>No photos found.</p>";
