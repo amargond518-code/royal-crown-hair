@@ -1,0 +1,17 @@
+{
+  "name": "Royal Crown Hair",
+  "short_name": "Royal Crown",
+  "description": "Royal Crown Hair - Premium Human Hair Collection",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "file_00000000ca5c82118acb195f3ed2a4f8.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
