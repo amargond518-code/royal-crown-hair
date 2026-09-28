@@ -462,11 +462,30 @@ const images = files.filter(file => {
         image.alt = "Royal Crown Hair";
 
         const title = document.createElement("h3");
-        title.textContent = "Human Hair";
+title.textContent = "Human Hair";
 
-        const price = document.createElement("div");
-        price.className = "price";
-        price.textContent = "Price on Request";
+const weight = document.createElement("div");
+weight.textContent = "Weight: 100 Gram";
+
+const typeLabel = document.createElement("div");
+typeLabel.textContent = "Hair Type:";
+
+const typeSelect = document.createElement("select");
+
+const rawOption = document.createElement("option");
+rawOption.textContent = "Raw Hair";
+rawOption.value = "Raw Hair";
+
+const processedOption = document.createElement("option");
+processedOption.textContent = "Processed Hair";
+processedOption.value = "Processed Hair";
+
+typeSelect.appendChild(rawOption);
+typeSelect.appendChild(processedOption);
+
+const price = document.createElement("div");
+price.className = "price";
+price.textContent = "Price on Request";
 
         const button = document.createElement("a");
         button.className = "whatsapp";
