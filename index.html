@@ -421,7 +421,7 @@ footer{
   </section>
 <script>
 
-const owner = "Royal crown hair";
+const owner = "amargond518";
 const repo = "royal-crown-hair";
 const branch = "main";
 
@@ -429,7 +429,7 @@ const gallery = document.getElementById("gallery");
 const loading = document.getElementById("loading");
 
 fetch(
-    `https://.com/repos/${owner}/${repo}/contents/?ref=${branch}`
+    https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch
 )
 .then(response => response.json())
 .then(files => {
