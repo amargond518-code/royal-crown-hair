@@ -421,7 +421,7 @@ footer{
   </section>
 <script>
 
-const owner = "amargond518-code";
+const owner = "Royal crown hair";
 const repo = "royal-crown-hair";
 const branch = "main";
 
@@ -429,7 +429,7 @@ const gallery = document.getElementById("gallery");
 const loading = document.getElementById("loading");
 
 fetch(
-    `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`
+    `https://.com/repos/${owner}/${repo}/contents/?ref=${branch}`
 )
 .then(response => response.json())
 .then(files => {
@@ -525,7 +525,6 @@ card.appendChild(lengthSelect);
 card.appendChild(typeLabel);
 card.appendChild(typeSelect);
 card.appendChild(price);
-card.appendChild(button);
 
         gallery.appendChild(card);
 
