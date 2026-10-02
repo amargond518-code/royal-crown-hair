@@ -404,46 +404,98 @@ footer{
 
     <p>
       Raw Hair and Processed Hair are available.<br>
-    <section class="section" id="products">
-  <h2>Our Hair Collection</h2>
+    <script>
+const owner = "amargond518";
+const repo = "royal-crown-hair";
+const branch = "main";
 
-  <div class="gallery">
+const gallery = document.getElementById("gallery");
+const loading = document.getElementById("loading");
 
-    <div class="card">
-      <img src="IMG-20260925-WA0015.jpg" alt="Royal Crown Hair">
-      <h3>Human Hair</h3>
-      <p>1 Piece = 100 Gram</p>
-      <p>Hair Type: Raw / Processed</p>
-      <a class="whatsapp"
-         href="https://wa.me/919405358227"
-         target="_blank">
-         WhatsApp / Contact
-      </a>
-    </div>
+const apiUrl =
+  `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`;
 
-    <div class="card">
-      <img src="IMG-20260925-WA0017.jpg" alt="Royal Crown Hair">
-      <h3>Human Hair</h3>
-      <p>1 Piece = 100 Gram</p>
-      <p>Hair Type: Raw / Processed</p>
-      <a class="whatsapp"
-         href="https://wa.me/919405358227"
-         target="_blank">
-         WhatsApp / Contact
-      </a>
-    </div>
+fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("GitHub files load nahi hui");
+    }
+    return response.json();
+  })
+  .then(files => {
 
-    <div class="card">
-      <img src="IMG-20260925-WA0018.jpg" alt="Royal Crown Hair">
-      <h3>Human Hair</h3>
-      <p>1 Piece = 100 Gram</p>
-      <p>Hair Type: Raw / Processed</p>
-      <a class="whatsapp"
-         href="https://wa.me/919405358227"
-         target="_blank">
-         WhatsApp / Contact
-      </a>
-    </div>
+    loading.style.display = "none";
 
-  </div>
-    </section>
+    const LOGO_FILE =
+      "file_00000000ca5c82118acb195f3ed2a4f8.png";
+
+    const images = files.filter(file => {
+      const name = (file.name || "").trim().toLowerCase();
+
+      return file.type === "file" &&
+        /\.(jpg|jpeg|png|webp|gif)$/i.test(name) &&
+        name !== LOGO_FILE.toLowerCase();
+    });
+
+    if (images.length === 0) {
+      gallery.innerHTML = "<p>No hair photos found.</p>";
+      return;
+    }
+
+    images.forEach(file => {
+
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const image = document.createElement("img");
+
+      image.src =
+        `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURIComponent(file.name)}`;
+
+      image.alt = "Royal Crown Hair";
+      image.loading = "lazy";
+
+      const title = document.createElement("h3");
+      title.textContent = "Human Hair";
+
+      const weight = document.createElement("div");
+      weight.textContent = "1 Piece = 100 Gram";
+
+      const typeLabel = document.createElement("div");
+      typeLabel.textContent = "Hair Type:";
+
+      const typeSelect = document.createElement("select");
+
+      const rawOption = document.createElement("option");
+      rawOption.textContent = "Raw Hair";
+      rawOption.value = "Raw Hair";
+
+      const processedOption = document.createElement("option");
+      processedOption.textContent = "Processed Hair";
+      processedOption.value = "Processed Hair";
+
+      typeSelect.appendChild(rawOption);
+      typeSelect.appendChild(processedOption);
+
+      const button = document.createElement("a");
+      button.className = "whatsapp";
+      button.href =
+        "https://wa.me/919405358227?text=Hello%20Royal%20Crown%20Hair,%20I%20am%20interested%20in%20your%20human%20hair.";
+      button.target = "_blank";
+      button.textContent = "WhatsApp / Contact";
+
+      card.appendChild(image);
+      card.appendChild(title);
+      card.appendChild(weight);
+      card.appendChild(typeLabel);
+      card.appendChild(typeSelect);
+      card.appendChild(button);
+
+      gallery.appendChild(card);
+    });
+
+  })
+  .catch(error =>
+
+  });
+    </script>
