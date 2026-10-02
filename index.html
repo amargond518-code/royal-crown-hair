@@ -429,8 +429,9 @@ const gallery = document.getElementById("gallery");
 const loading = document.getElementById("loading");
 
 fetch(
-    https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch
-)
+    const apiUrl =
+  `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`;
+fetch(apiUrl)
 .then(response => response.json())
 .then(files => {
 
