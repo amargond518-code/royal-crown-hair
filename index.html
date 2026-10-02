@@ -427,12 +427,9 @@ const branch = "main";
 
 const gallery = document.getElementById("gallery");
 const loading = document.getElementById("loading");
-
 fetch(
-    const apiUrl =
-  `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`;
-.then(response => response.json())
-.then(files => {
+  `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`
+)
 
     loading.style.display = "none";
 
@@ -459,7 +456,7 @@ const images = files.filter(file => {
         const image = document.createElement("img");
 
         image.src =
-        `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURIComponent(file.name)}`;
+`https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURIComponent(file.name)}`;
 
         image.alt = "Royal Crown Hair";
 
