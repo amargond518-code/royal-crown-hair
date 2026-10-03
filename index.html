@@ -418,83 +418,77 @@ fetch(`https://api.github.com/repos/${owner}/${repo}/contents?ref=${branch}`)
 
     const LOGO_FILE = "file_00000000ca5c82";
 
-    // Image files filter karne ka sahi tarika
+    // Image files filter karne ka tarika
     const images = files.filter(file => {
       const name = (file.name || "").toLowerCase();
       return file.type === "file" && 
         /\.(jpg|jpeg|png|webp|gif)$/i.test(name) && 
         !name.includes(LOGO_FILE);
     });
-      
-        if (images.length === 0) {
+
+    if (images.length === 0) {
       gallery.innerHTML = "<p>No products found.</p>";
       return;
-        }
-      
-      // Loop chalakar saari images aur cards render karna
-      images.forEach(file => {
-        const card = document.createElement("div");
-        card.className = "card";
+    }
 
-        const image = document.createElement("img");
-        image.src = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${file.name}`;
-        image.alt = "Royal Crown Hair";
+    // Loop chalakar saari images aur cards render karna
+    images.forEach(file => {
+      const card = document.createElement("div");
+      card.className = "card";
 
-        const title = document.createElement("h3");
-        title.textContent = "Human Hair";
+      const image = document.createElement("img");
+      image.src = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${file.name}`;
+      image.alt = "Royal Crown Hair";
 
-        const weight = document.createElement("p");
-        weight.textContent = "Weight: 100 g.";
+      const title = document.createElement("h3");
+      title.textContent = "Human Hair";
 
-        const typeLabel = document.createElement("label");
-        typeLabel.textContent = "Hair Type:";
+      const weight = document.createElement("p");
+      weight.textContent = "Weight: 100g";
 
-        const typeSelect = document.createElement("select");
+      const typeLabel = document.createElement("label");
+      typeLabel.textContent = "Hair Type:";
 
-        const rawOption = document.createElement("option");
-        rawOption.textContent = "Raw Hair";
-        rawOption.value = "Raw Hair";
+      const typeSelect = document.createElement("select");
 
-        const processedOption = document.createElement("option");
-        processedOption.textContent = "Processed Hair";
-        processedOption.value = "Processed Hair";
+      const rawOption = document.createElement("option");
+      rawOption.textContent = "Raw Hair";
+      rawOption.value = "Raw Hair";
 
-        typeSelect.appendChild(rawOption);
-        typeSelect.appendChild(processedOption);
+      const processedOption = document.createElement("option");
+      processedOption.textContent = "Processed Hair";
+      processedOption.value = "Processed Hair";
 
-        const price = document.createElement("div");
-        price.className = "price";
-        price.textContent = "Price on Request";
+      typeSelect.appendChild(rawOption);
+      typeSelect.appendChild(processedOption);
 
-        const button = document.createElement("a");
-        button.className = "whatsapp";
-        button.href = "https://wa.me/919405358227";
-        button.target = "_blank";
-        button.textContent = "WhatsApp / Contact";
+      const price = document.createElement("p");
+      price.className = "price";
+      price.textContent = "Price on Request";
 
-        const groupButton = document.createElement("a");
-        groupButton.className = "whatsapp";
-        groupButton.href = "https://chat.whatsapp.com/";
-        groupButton.target = "_blank";
-        groupButton.textContent = "Join WhatsApp Group";
+      const button = document.createElement("a");
+      button.className = "whatsapp-btn";
+      button.href = "https://wa.me/919999999999"; // Apna WhatsApp Number Yahan Dalein
+      button.target = "_blank";
+      button.textContent = "WhatsApp / Contact";
 
-        // Card me items append karna
-        card.appendChild(image);
-        card.appendChild(title);
-        card.appendChild(weight);
-        card.appendChild(typeLabel);
-        card.appendChild(typeSelect);
-        card.appendChild(price);
-        card.appendChild(button);
-        card.appendChild(groupButton);
+      // Card me items append karna
+      card.appendChild(image);
+      card.appendChild(title);
+      card.appendChild(weight);
+      card.appendChild(typeLabel);
+      card.appendChild(typeSelect);
+      card.appendChild(price);
+      card.appendChild(button);
 
-        gallery.appendChild(card);
-      });
-    })
-    .catch(error => {
-      console.error("Error fetching images:", error);
-      if (loading) loading.textContent = "Failed to load images.";
+      gallery.appendChild(card);
     });
-</script>
+  })
+  .catch(error => {
+    console.error("Error fetching images:", error);
+    if (loading) loading.textContent = "Failed to load products.";
+  });
+    </script>
+        
 
     
