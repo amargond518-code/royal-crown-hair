@@ -405,97 +405,98 @@ footer{
     <p>
       Raw Hair and Processed Hair are available.<br>
     <script>
-const owner = "amargond518";
-const repo = "royal-crown-hair";
-const branch = "main";
-const gallery = document.getElementById("gallery");
-const loading = document.getElementById("loading");
+  const owner = "amargond518";
+  const repo = "royal-crown-hair";
+  const branch = "main";
+  const gallery = document.getElementById("gallery");
+  const loading = document.getElementById("loading");
 
-fetch(
-    `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`
-)
-.then(response => response.json())
-.then(files => {
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`)
+    .then(response => response.json())
+    .then(files => {
+      if (loading) loading.style.display = "none";
 
-    loading.style.display = "none";
+      const LOGO_FILE = "file_00000000ca5c82".toLowerCase();
 
-const LOGO_FILE = "file_00000000ca5c82118acb195f3ed2a4f8.png";
+      // Image files filter karne ka sahi tarika
+      const images = files.filter(file => {
+        const name = (file.name || "").trim().toLowerCase();
+        const isImage = /\.(jpg|jpeg|png|webp|gif)$/i.test(name);
+        const isNotLogo = !name.includes(LOGO_FILE);
 
-const images = files.filter(file => {
-    const name = (file.name || "").trim().toLowerCase();
-const imageNames = [
-    return file.type === "file" &&
-        /\.(jpg|jpeg|png|webp|gif)$/i.test(name) &&
-        name !== LOGO_FILE.toLowerCase();
-});
+        return file.type === "file" && isImage && isNotLogo;
+      });
 
-    if(images.length === 0){
-        gallery.innerHTML = "</p>";
+      // Agar koi image nahi milti hai
+      if (images.length === 0) {
+        gallery.innerHTML = "<p>No images found.</p>";
         return;
-    }
+      }
 
-    images.forEach(file => {
-
+      // Loop chalakar saari images aur cards render karna
+      images.forEach(file => {
         const card = document.createElement("div");
         card.className = "card";
 
         const image = document.createElement("img");
-
-        image.src =
-        `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURIComponent(file.name)}`;
-
+        image.src = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${file.name}`;
         image.alt = "Royal Crown Hair";
 
         const title = document.createElement("h3");
-title.textContent = "Human Hair";
+        title.textContent = "Human Hair";
 
-const weight = document.createElement("div");
-weight.textContent = "Weight: 100 g.";
+        const weight = document.createElement("p");
+        weight.textContent = "Weight: 100 g.";
 
-const typeLabel = document.createElement("div");
-typeLabel.textContent = "Hair Type:";
+        const typeLabel = document.createElement("label");
+        typeLabel.textContent = "Hair Type:";
 
-const typeSelect = document.createElement("select");
+        const typeSelect = document.createElement("select");
 
-const rawOption = document.createElement("option");
-rawOption.textContent = "Raw Hair";
-rawOption.value = "Raw Hair";
+        const rawOption = document.createElement("option");
+        rawOption.textContent = "Raw Hair";
+        rawOption.value = "Raw Hair";
 
-const processedOption = document.createElement("option");
-processedOption.textContent = "Processed Hair";
-processedOption.value = "Processed Hair";
+        const processedOption = document.createElement("option");
+        processedOption.textContent = "Processed Hair";
+        processedOption.value = "Processed Hair";
 
-typeSelect.appendChild(rawOption);
-typeSelect.appendChild(processedOption);
+        typeSelect.appendChild(rawOption);
+        typeSelect.appendChild(processedOption);
 
-const price = document.createElement("div");
-price.className = "price";
-price.textContent = "Price on Request";
+        const price = document.createElement("div");
+        price.className = "price";
+        price.textContent = "Price on Request";
 
         const button = document.createElement("a");
-button.className = "whatsapp";
-button.href = "https://wa.me/919405358227";
-button.target = "_blank";
-button.textContent = "WhatsApp / Contact";
+        button.className = "whatsapp";
+        button.href = "https://wa.me/919405358227";
+        button.target = "_blank";
+        button.textContent = "WhatsApp / Contact";
 
-const groupButton = document.createElement("a");
-groupButton.className = "whatsapp";
-groupButton.href = "https://chat.whatsapp.com/IeNUTs2G9kXBKR3ZyACiow";
-groupButton.target = "_blank";
-groupButton.textContent = "Join WhatsApp Community";
-card.appendChild(groupButton);
+        const groupButton = document.createElement("a");
+        groupButton.className = "whatsapp";
+        groupButton.href = "https://chat.whatsapp.com/";
+        groupButton.target = "_blank";
+        groupButton.textContent = "Join WhatsApp Group";
+
+        // Card me items append karna
         card.appendChild(image);
-card.appendChild(title);
-card.appendChild(weight);
-card.appendChild(typeLabel);
-card.appendChild(typeSelect);
-card.appendChild(price);
-card.appendChild(button);
+        card.appendChild(title);
+        card.appendChild(weight);
+        card.appendChild(typeLabel);
+        card.appendChild(typeSelect);
+        card.appendChild(price);
+        card.appendChild(button);
+        card.appendChild(groupButton);
 
         gallery.appendChild(card);
-
+      });
+    })
+    .catch(error => {
+      console.error("Error fetching images:", error);
+      if (loading) loading.textContent = "Failed to load images.";
+    });
 </script>
 
-</body>
-</html>
     
