@@ -421,18 +421,19 @@ footer{
       // Image files filter karne ka sahi tarika
       const images = files.filter(file => {
         const name = (file.name || "").trim().toLowerCase();
-        const isImage = /\.(jpg|jpeg|png|webp|gif)$/i.test(name);
-        const isNotLogo = !name.includes(LOGO_FILE);
-
-        return file.type === "file" && isImage && isNotLogo;
-      });
-
-      // Agar koi image nahi milti hai
+    const images = files.filter(file => {
+    const name = (file.name || "").toLowerCase();
+    return file.type === "file" && 
+           /\.(jpg|jpeg|png|webp|gif)$/i.test(name) && 
+           !name.includes(LOGO_FILE);
+});
+          
       if (images.length === 0) {
-        gallery.innerHTML = "<p>No images found.</p>";
-        return;
-      }
-
+        if(images.length === 0){
+    gallery.innerHTML = "<p>No products found.</p>";
+    return;
+        }
+          
       // Loop chalakar saari images aur cards render karna
       images.forEach(file => {
         const card = document.createElement("div");
