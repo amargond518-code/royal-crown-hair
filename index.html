@@ -405,35 +405,32 @@ footer{
     <p>
       Raw Hair and Processed Hair are available.<br>
     <script>
-  const owner = "amargond518";
-  const repo = "royal-crown-hair";
-  const branch = "main";
-  const gallery = document.getElementById("gallery");
-  const loading = document.getElementById("loading");
+const owner = "amargond518";
+const repo = "royal-crown-hair";
+const branch = "main";
+const gallery = document.getElementById("gallery");
+const loading = document.getElementById("loading");
 
-  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`)
-    .then(response => response.json())
-    .then(files => {
-      if (loading) loading.style.display = "none";
+fetch(`https://api.github.com/repos/${owner}/${repo}/contents?ref=${branch}`)
+  .then(response => response.json())
+  .then(files => {
+    if (loading) loading.style.display = "none";
 
-      const LOGO_FILE = "file_00000000ca5c82".toLowerCase();
+    const LOGO_FILE = "file_00000000ca5c82";
 
-      // Image files filter karne ka sahi tarika
-      const images = files.filter(file => {
-        const name = (file.name || "").trim().toLowerCase();
+    // Image files filter karne ka sahi tarika
     const images = files.filter(file => {
-    const name = (file.name || "").toLowerCase();
-    return file.type === "file" && 
-           /\.(jpg|jpeg|png|webp|gif)$/i.test(name) && 
-           !name.includes(LOGO_FILE);
-});
-          
-      if (images.length === 0) {
-        if(images.length === 0){
-    gallery.innerHTML = "<p>No products found.</p>";
-    return;
+      const name = (file.name || "").toLowerCase();
+      return file.type === "file" && 
+        /\.(jpg|jpeg|png|webp|gif)$/i.test(name) && 
+        !name.includes(LOGO_FILE);
+    });
+      
+        if (images.length === 0) {
+      gallery.innerHTML = "<p>No products found.</p>";
+      return;
         }
-          
+      
       // Loop chalakar saari images aur cards render karna
       images.forEach(file => {
         const card = document.createElement("div");
