@@ -405,7 +405,7 @@ footer{
     <p>
       Raw Hair and Processed Hair are available.<br>
     <script>
-const owner = "amargond518";
+const owner = "amargond518-code";
 const repo = "royal-crown-hair";
 const branch = "main";
 const gallery = document.getElementById("gallery");
@@ -416,7 +416,7 @@ fetch(`https://api.github.com/repos/${owner}/${repo}/contents?ref=${branch}`)
   .then(files => {
     if (loading) loading.style.display = "none";
 
-    const LOGO_FILE = "file_00000000ca5c82";
+    const LOGO_FILE = "file_00000000ca5c82118acb195f3ed2a4f8.png";
 
     // Image files filter karne ka tarika
     const images = files.filter(file => {
