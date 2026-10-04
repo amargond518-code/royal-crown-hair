@@ -486,7 +486,38 @@ fetch(
 
     image.alt = "Royal Crown Hair";
     image.loading = "lazy";
+    image.style.cursor = "pointer";
 
+image.onclick = function() {
+  const popup = document.createElement("div");
+
+  popup.style.position = "fixed";
+  popup.style.left = "0";
+  popup.style.top = "0";
+  popup.style.width = "100%";
+  popup.style.height = "100%";
+  popup.style.background = "rgba(0,0,0,0.9)";
+  popup.style.display = "flex";
+  popup.style.justifyContent = "center";
+  popup.style.alignItems = "center";
+  popup.style.zIndex = "99999";
+
+  const bigImage = document.createElement("img");
+
+  bigImage.src = image.src;
+  bigImage.style.maxWidth = "95%";
+  bigImage.style.maxHeight = "90%";
+  bigImage.style.objectFit = "contain";
+  bigImage.style.borderRadius = "10px";
+
+  popup.appendChild(bigImage);
+
+  popup.onclick = function() {
+    popup.remove();
+  };
+
+  document.body.appendChild(popup);
+};
     const title = document.createElement("h3");
     title.textContent = "Human Hair";
 
