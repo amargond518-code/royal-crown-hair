@@ -456,7 +456,12 @@ footer{
     </p>
 
 </section>
-
+<div class="video-section">
+  <video controls playsinline preload="metadata">
+    <source src="./royal-crown-hair-video.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+</div>
 <section class="section" id="products">
 
   <h2>Our Hair Collection</h2>
@@ -510,6 +515,18 @@ footer{
     Join WhatsApp Community
   </a>
 </section>
+.video-section {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.video-section video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
 <script>
 const owner = "amargond518-code";
 const repo = "royal-crown-hair";
