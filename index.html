@@ -698,8 +698,12 @@ service.textContent = "We Make All Types of Hair Styles, Bulk Curly, Body Wave, 
     typeSelect.appendChild(processed);
 
     const price = document.createElement("p");
-    price.className = "price";
-    price.textContent = "Price on Request";
+price.className = "price";
+
+const priceINR = 0;
+
+price.dataset.inr = priceINR;
+price.textContent = "₹0 INR";
 
     const button = document.createElement("a");
     button.className = "whatsapp-btn";
