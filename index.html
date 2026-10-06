@@ -758,7 +758,7 @@ async function loadCurrencyRates() {
 
     updatePrices();
   } catch (error) {
-    console.error("Currency rates could not be loaded:", error);
+    console.error("Currency conversion error:", error);
   }
 }
 
@@ -770,9 +770,6 @@ function updatePrices() {
 
   document.querySelectorAll(".price").forEach(priceElement => {
     const inrPrice = Number(priceElement.dataset.inr);
-
-    if (!inrPrice) return;
-
     const convertedPrice = inrPrice * rate;
     const symbol = currencySymbols[currency];
 
