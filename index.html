@@ -730,6 +730,56 @@ service.textContent = "We Make All Types of Hair Styles, Bulk Curly, Body Wave, 
     loading.textContent = "Photos load nahi ho pa rahi hain.";
   }
 });
+const currencySelect = document.getElementById("currency");
+
+const currencySymbols = {
+  INR: "₹",
+  USD: "$",
+  EUR: "€",
+  GBP: "£",
+  CAD: "C$",
+  AUD: "A$"
+};
+
+let exchangeRates = {};
+
+async function loadCurrencyRates() {
+  try {
+    const response = await fetch(
+      "https://open.er-api.com/v6/latest/INR"
+    );
+
+    const data = await response.json();
+    exchangeRates = data.rates;
+
+    updatePrices();
+  } catch (error) {
+    console.error("Currency rates could not be loaded:", error);
+  }
+}
+
+function updatePrices() {
+  const currency = currencySelect.value;
+  const rate = currency === "INR" ? 1 : exchangeRates[currency];
+
+  if (!rate) return;
+
+  document.querySelectorAll(".price").forEach(priceElement => {
+    const inrPrice = Number(priceElement.dataset.inr);
+
+    if (!inrPrice) return;
+
+    const convertedPrice = inrPrice * rate;
+    const symbol = currencySymbols[currency];
+
+    priceElement.textContent =
+      `${symbol}${convertedPrice.toFixed(2)} ${currency}`;
+  });
+}
+
+currencySelect.addEventListener("change", updatePrices);
+
+loadCurrencyRates();
 </script>
         
 
