@@ -863,5 +863,110 @@ function updatePrices() {
 currencySelect.addEventListener("change", updatePrices);
 
 loadCurrencyRates();
+<script>
+/* ===== BOTTOM BUTTON FUNCTIONS ===== */
+
+let cartItems = [];
+let wishlistItems = [];
+
+function goShop() {
+  document.getElementById("products").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function addWishlist(name) {
+  if (!wishlistItems.includes(name)) {
+    wishlistItems.push(name);
+  }
+
+  document.getElementById("wishlistCount").textContent =
+    wishlistItems.length;
+}
+
+function openWishlist() {
+  if (wishlistItems.length === 0) {
+    alert("Wishlist is empty.");
+    return;
+  }
+
+  alert("Wishlist:\n\n" + wishlistItems.join("\n"));
+}
+
+function searchHair() {
+  const search = prompt("Search hair:");
+
+  if (!search) return;
+
+  document.querySelectorAll(".card").forEach(function(card) {
+    const text = card.innerText.toLowerCase();
+
+    card.style.display =
+      text.includes(search.toLowerCase()) ? "" : "none";
+  });
+
+  goShop();
+}
+
+function addCart(name) {
+  cartItems.push(name);
+
+  document.getElementById("cartCount").textContent =
+    cartItems.length;
+
+  alert(name + " added to cart.");
+}
+
+function openCart() {
+  if (cartItems.length === 0) {
+    alert("Cart is empty.");
+    return;
+  }
+
+  alert("Your Cart:\n\n" + cartItems.join("\n"));
+}
+
+function openOrders() {
+  alert(
+    "Orders\n\nYour orders will appear here after placing an order."
+  );
+}
+</script>
+
+<!-- ===== BOTTOM NAVIGATION ===== -->
+
+<div class="bottom-nav">
+
+  <button onclick="goShop()">
+    <span>⌂</span>
+    Shop
+  </button>
+
+  <button onclick="openWishlist()">
+    <span>♡</span>
+    Wishlist
+    <small id="wishlistCount" class="count">0</small>
+  </button>
+
+  <button onclick="searchHair()">
+    <span>⌕</span>
+    Search
+  </button>
+
+  <button onclick="openCart()">
+    <span>🛒</span>
+    Cart
+    <small id="cartCount" class="count">0</small>
+  </button>
+
+  <button onclick="openOrders()">
+    <span>▣</span>
+    Orders
+  </button>
+
+</div>
+
+</body>
+</html>
 </script>
 
