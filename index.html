@@ -651,7 +651,8 @@ fetch(
     const image = document.createElement("img");
 
     image.src =
-      `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURIComponent(file.name)}`;
+      image.src =
+`https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURIComponent(file.name)}`;
 
     image.alt = "Royal Crown Hair";
     image.loading = "lazy";
@@ -919,5 +920,5 @@ function openOrders() {
   );
 }
     
-<script>
+</script>
 
